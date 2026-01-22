@@ -1,0 +1,38 @@
+[Unit]
+Description=PATRI-TECH Django Backend (Gunicorn)
+After=network.target
+
+[Service]
+Type=notify
+# Usuário que executará o serviço (ajuste conforme seu usuário EC2)
+User=ubuntu
+Group=ubuntu
+
+# Diretório de trabalho (onde está o manage.py)
+WorkingDirectory=/home/ubuntu/patritech
+
+# Variáveis de ambiente
+Environment="PATH=/home/ubuntu/patritech/venv/bin"
+Environment="DJANGO_SETTINGS_MODULE=projeto.settings"
+Environment="DJANGO_DEBUG=False"
+Environment="DJANGO_ALLOWED_HOSTS=seu-dominio.com,seu-ip-ec2"
+Environment="DJANGO_SECRET_KEY=GERE_UMA_CHAVE_SECRETA_AQUI"
+
+# Comando para iniciar o Gunicorn
+ExecStart=/home/ubuntu/patritech/venv/bin/gunicorn \
+    --config /home/ubuntu/patritech/gunicorn_config.py \
+    projeto.wsgi:application
+
+# Reiniciar automaticamente em caso de falha
+Restart=always
+RestartSec=10
+
+# Limites de recursos
+LimitNOFILE=4096
+
+# Logs
+StandardOutput=append:/home/ubuntu/logs/patritech-backend.log
+StandardError=append:/home/ubuntu/logs/patritech-backend-error.log
+
+[Install]
+WantedBy=multi-user.target

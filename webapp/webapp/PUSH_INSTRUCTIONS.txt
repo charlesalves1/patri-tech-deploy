@@ -1,0 +1,52 @@
+=====================================================
+INSTRUÇÕES PARA FAZER PUSH PARA O GITHUB
+=====================================================
+
+As alterações já foram commitadas localmente!
+Commit hash: 0a65dc3
+
+Para fazer o push para o GitHub, execute:
+
+git push origin main
+
+Se pedir autenticação, você tem algumas opções:
+
+OPÇÃO 1: Usar Personal Access Token (Recomendado)
+--------------------------------------------------
+1. Vá em: https://github.com/settings/tokens
+2. Gere um novo token com permissões 'repo'
+3. Use o token como senha quando o Git pedir
+
+OPÇÃO 2: Configurar SSH
+------------------------
+1. Gere uma chave SSH: ssh-keygen -t ed25519 -C "seu-email@example.com"
+2. Adicione em: https://github.com/settings/keys
+3. Altere o remote para SSH: 
+   git remote set-url origin git@github.com:charlesalves1/patri-tech.git
+4. Faça push: git push origin main
+
+OPÇÃO 3: GitHub CLI
+--------------------
+1. Instale: https://cli.github.com/
+2. Autentique: gh auth login
+3. Faça push: git push origin main
+
+=====================================================
+
+Arquivos modificados/criados:
+- gunicorn_config.py (novo)
+- deployment/ (novo diretório com 5 arquivos)
+- .env.example (novo)
+- frontend/.env.example (novo)
+- frontend/src/config/api.js (novo)
+- DEPLOY.md (novo)
+- ARCHITECTURE.md (novo)
+- QUICKSTART.md (novo)
+- CHANGES.md (novo)
+- README.md (atualizado)
+- .gitignore (atualizado)
+- requirements.txt (atualizado)
+
+Total: 16 arquivos alterados, +2110 linhas
+
+=====================================================
